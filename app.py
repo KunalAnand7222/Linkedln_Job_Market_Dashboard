@@ -84,32 +84,32 @@ avg_salary=int(df["normalized_salary"].dropna().mean()) if df["normalized_salary
 
 st.markdown(f"""
 <div class="section">
-    <h1>💼 LinkedIn Job Market Dashboard</h1>
+    <h1> LinkedIn Job Market Dashboard</h1>
     <p style="color:#cbd5f5;font-size:18px;margin-top:-8px">
         Hiring trends, salaries & workforce insights
     </p>
     <div class="kpi-grid">
         <div class="kpi-card">
-            <div class="kpi-title">🔎 Total Jobs</div>
+            <div class="kpi-title">Total Jobs</div>
             <div class="kpi-value">{len(df):,}</div>
         </div>
         <div class="kpi-card">
-            <div class="kpi-title">🏢 Companies</div>
+            <div class="kpi-title">Companies</div>
             <div class="kpi-value">{df["company_id"].nunique():,}</div>
         </div>
         <div class="kpi-card">
-            <div class="kpi-title">📍 Locations</div>
+            <div class="kpi-title">Locations</div>
             <div class="kpi-value">{df["location"].nunique():,}</div>
         </div>
         <div class="kpi-card">
-            <div class="kpi-title">💰 Avg Salary</div>
+            <div class="kpi-title">Avg Salary</div>
             <div class="kpi-value">${avg_salary:,}</div>
         </div>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown("## 📊 Hiring Demand Overview")
+st.markdown("## Hiring Demand Overview")
 
 l1,l2=st.columns(2)
 
@@ -136,7 +136,7 @@ fig2=px.bar(
 l2.plotly_chart(fig2,use_container_width=True)
 
 st.markdown("---")
-st.markdown("## 🧭 Work & Experience Trends")
+st.markdown("## Work & Experience Trends")
 
 w1,w2=st.columns(2)
 
@@ -184,7 +184,7 @@ with w2:
     st.plotly_chart(fig4,use_container_width=True)
 
 st.markdown("---")
-st.markdown("## 🌍 Job Activity")
+st.markdown("## Job Activity")
 
 a1,a2=st.columns(2)
 
@@ -209,7 +209,7 @@ a2.plotly_chart(fig6,use_container_width=True)
 
 
 st.markdown("---")
-st.markdown("## 🧠 Skills & Industry Insights")
+st.markdown("## Skills & Industry Insights")
 
 jobskill=pd.read_csv("job_skills.csv")
 skills=pd.read_csv("skills.csv")
@@ -249,7 +249,7 @@ fig8=px.bar(
 )
 st.plotly_chart(fig8,use_container_width=True)
 st.markdown("---")
-st.markdown("## 💰 Salary Analysis")
+st.markdown("## Salary Analysis")
 
 sal=df.dropna(subset=["normalized_salary"])
 sal=sal[sal["normalized_salary"]<300000]
@@ -277,7 +277,7 @@ fig10=px.violin(
 s2.plotly_chart(fig10,use_container_width=True)
 
 st.markdown("---")
-st.markdown("## 📈 Skills vs Salary Relationship")
+st.markdown("## Skills vs Salary Relationship")
 
 skill_cnt=sk.groupby("job_id").size().reset_index(name="skill_count")
 df2=df.merge(skill_cnt,on="job_id",how="left")
@@ -297,7 +297,7 @@ fig11=px.scatter(
 st.plotly_chart(fig11,use_container_width=True)
 
 st.markdown("---")
-st.markdown("## 🤖 Machine Learning: Salary Prediction")
+st.markdown("## Machine Learning: Salary Prediction")
 
 ml=df2[
     [
@@ -338,7 +338,7 @@ m1,m2=st.columns(2)
 m1.metric("Model R² Score",round(r2_score(yte,yp),3))
 m2.metric("Training Samples",len(Xtr))
 
-st.markdown("### 🎯 Predict Salary")
+st.markdown("### Predict Salary")
 
 e=st.selectbox(
     "Experience Level",
