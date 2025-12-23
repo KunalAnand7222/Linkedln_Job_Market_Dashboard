@@ -321,35 +321,30 @@ avg_salary=int(df["normalized_salary"].dropna().mean()) if df["normalized_salary
 
 st.markdown(f"""
 <div class="section">
-  <h1>💼 LinkedIn Job Market Dashboard</h1>
-  <p style="color:#cbd5f5;font-size:18px;margin-top:-8px">
-    Hiring trends, salaries & workforce insights
-  </p>
-
-  <div class="kpi-grid">
-    <div class="kpi-card">
-      <div class="kpi-title">🔎 Total Jobs</div>
-      <div class="kpi-value">{len(df):,}</div>
+    <h1>💼 LinkedIn Job Market Dashboard</h1>
+    <p style="color:#cbd5f5;font-size:18px;margin-top:-8px">
+        Hiring trends, salaries & workforce insights
+    </p>
+    <div class="kpi-grid">
+        <div class="kpi-card">
+            <div class="kpi-title">🔎 Total Jobs</div>
+            <div class="kpi-value">{len(df):,}</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-title">🏢 Companies</div>
+            <div class="kpi-value">{df["company_id"].nunique():,}</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-title">📍 Locations</div>
+            <div class="kpi-value">{df["location"].nunique():,}</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-title">💰 Avg Salary</div>
+            <div class="kpi-value">${avg_salary:,}</div>
+        </div>
     </div>
-
-    <div class="kpi-card">
-      <div class="kpi-title">🏢 Companies</div>
-      <div class="kpi-value">{df["company_id"].nunique():,}</div>
-    </div>
-
-    <div class="kpi-card">
-      <div class="kpi-title">📍 Locations</div>
-      <div class="kpi-value">{df["location"].nunique():,}</div>
-    </div>
-
-    <div class="kpi-card">
-      <div class="kpi-title">💰 Avg Salary</div>
-      <div class="kpi-value">${avg_salary:,}</div>
-    </div>
-  </div>
 </div>
-""",unsafe_allow_html=True)
-
+""", unsafe_allow_html=True)
 
 st.markdown("## 📊 Hiring Demand Overview")
 
